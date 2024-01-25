@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Registro de animal
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="logout()">
+    <ion-icon name="exit-outline"></ion-icon>
+  </ion-button>
+
+  <ion-list *ngFor="let animal of lista;">
+    <ion-item (click)="irParaEditar(animal)">
+      <ion-avatar *ngIf="animal.downloadURL != null">
+        <img src="{{animal.downloadURL}}"/>
+      </ion-avatar>
+      <ion-avatar *ngIf="animal.downloadURL == null">
+        <img src="assets/avatar.png"/>
+      </ion-avatar>
+      <ion-label style="margin-left: 5%;">{{animal.nome}}</ion-label>
+      <ion-label style="margin-left: 5%;">{{animal.especie}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="tertiary" (click)="irParaRegistro()">
+      <ion-icon name="add-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
