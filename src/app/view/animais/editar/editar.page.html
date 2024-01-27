@@ -14,23 +14,25 @@
       <ion-input label="Espécie" placeholder="Insira a Especie" formControlName="especie"></ion-input>
     </ion-item>
     <ion-item [disabled]="edicao">
-      <ion-input label="Nome" placeholder="Insira o nome" FormControlName="nome"></ion-input>
+      <ion-input label="Nome" placeholder="Insira o nome" formControlName="nome"></ion-input>
     </ion-item>
     <ion-item [disabled]="edicao">
-      <ion-select label="Gênero" placeholder="Selecione" FormControlName="genero">
+      <ion-select label="Gênero" placeholder="Selecione" formControlName="genero">
         <ion-select-option value="0">Fêmea</ion-select-option>
         <ion-select-option value="1">Macho</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item [disabled]="edicao">
-      <ion-input label="Peso" placeholder="Insira o peso do animal" FormControlName="peso" type="number"></ion-input>
+      <ion-input label="Peso" placeholder="Insira o peso do animal" formControlName="peso" type="number"></ion-input>
     </ion-item>
-    <ion-select label="Saúde" placeholder="Escolha" FormControlName="saude">
-      <ion-select-option value="0">Machucado/ferido</ion-select-option>
-      <ion-select-option value="1">Saudável</ion-select-option>
-      <ion-select-option value="2">Doente</ion-select-option>
-      <ion-select-option value="3">Aguardando exames</ion-select-option>
+    <ion-item [disabled]="edicao">
+      <ion-select label="Saúde" placeholder="Escolha" FormControlName="saude">
+        <ion-select-option value="0">Machucado/ferido</ion-select-option>
+        <ion-select-option value="1">Saudável</ion-select-option>
+        <ion-select-option value="2">Doente</ion-select-option>
+        <ion-select-option value="3">Aguardando exames</ion-select-option>
     </ion-select>
+  </ion-item>
     <ion-item *ngIf="animal.downloadURL != null">
       <img src="{{animal.downloadURL}}" />
     </ion-item>
