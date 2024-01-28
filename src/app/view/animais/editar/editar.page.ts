@@ -38,9 +38,9 @@ export class EditarPage implements OnInit {
   ngOnInit() {
     this.animal=history.state.animal;
     this.formEditar = this.FormBuilder.group({
-      especie: [this.animal.especie, [Validators.required]],
-      nome: [this.animal.nome, [Validators.required]],
-      genero: [this.animal.genero, [Validators.required]],
+      especie: [this.animal.especie,[Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+      nome: [this.animal.nome,[Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+      genero: [this.animal.genero,[Validators.required]],
       peso: [this.animal.peso],
       saude: [this.animal.saude]
     });
@@ -59,8 +59,10 @@ export class EditarPage implements OnInit {
 
 
   editar(){
-    if(!this.formEditar.valid){
-      this.alert.presentAlert("Erro", "Campos Obrigatórios!");
+    if(this.formEditar.value['peso']<0){
+      this.alert.presentAlert("Erro", "Peso não pode ser negativo");
+    }else if(!this.formEditar.valid){
+      this.alert.presentAlert("Erro", "Espécie, nome e gênero são obrigatórios!!");
     }else{
       let novo : Animais = new Animais(this.formEditar.value['especie'], this.formEditar.value['nome'], this.formEditar.value['genero']);
       novo.peso = this.formEditar.value['peso'];

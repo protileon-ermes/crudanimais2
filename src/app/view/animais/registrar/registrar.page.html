@@ -8,22 +8,36 @@
   <form [formGroup]="formRegistrar" (ngSubmit)="registrar()">
     <ion-list>
       <ion-item>
-        <ion-input label="Espécie" placeholder="Insira a Especie" formControlName="especie"></ion-input>
+        <ion-label position="floating">Espécie</ion-label>
+        <ion-input placeholder="Insira a Especie" formControlName="especie"></ion-input>
       </ion-item>
+      <!--mensagem de erro de especie-->
+        <span *ngIf="formRegistrar.get('especie')?.dirty 
+        && formRegistrar.get('especie')?.errors?.['minlength']">Especie deve ter no minimo 3 letras</span>
+        <span *ngIf="formRegistrar.get('especie')?.dirty 
+        && formRegistrar.get('especie')?.errors?.['maxlength']">Especie deve ter no maximo 12 letras</span>
       <ion-item>
-        <ion-input label="Nome" placeholder="Insira o nome" formControlName="nome"></ion-input>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input placeholder="Insira o nome" formControlName="nome"></ion-input>
       </ion-item>
+      <span *ngIf="formRegistrar.get('nome')?.dirty 
+        && formRegistrar.get('nome')?.errors?.['minlength']">Nome deve ter no minimo 3 letras</span>
+        <span *ngIf="formRegistrar.get('nome')?.dirty 
+        && formRegistrar.get('nome')?.errors?.['maxlength']">Nome deve ter no maximo 20 letras</span>
       <ion-item>
-        <ion-select label="Gênero" placeholder="Selecione" formControlName="genero">
+        <ion-label position="floating">Gênero</ion-label>
+        <ion-select placeholder="Selecione" formControlName="genero">
           <ion-select-option value="0">Fêmea</ion-select-option>
           <ion-select-option value="1">Macho</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-input label="Peso" placeholder="Insira o peso do animal" formControlName="peso" type="number"></ion-input>
+        <ion-label position="floating">Peso</ion-label>
+        <ion-input placeholder="Insira o peso do animal" formControlName="peso" type="number"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-select label="Saúde" placeholder="Escolha" formControlName="saude">
+        <ion-label position="floating">Saúde</ion-label>
+        <ion-select placeholder="Escolha" formControlName="saude">
           <ion-select-option value="0">Machucado/ferido</ion-select-option>
           <ion-select-option value="1">Saudável</ion-select-option>
           <ion-select-option value="2">Doente</ion-select-option>

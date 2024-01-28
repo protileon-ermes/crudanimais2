@@ -11,11 +11,21 @@
       <ion-toggle (ionChange)="PermitirEdicao()">Habilitar Edição</ion-toggle>
     </ion-item>
     <ion-item [disabled]="edicao">
-      <ion-input label="Espécie" placeholder="Insira a Especie" formControlName="especie"></ion-input>
+      <ion-label position="floating">Espécie</ion-label>
+      <ion-input placeholder="Insira a Especie" formControlName="especie"></ion-input>
     </ion-item>
+    <span *ngIf="formEditar.get('especie')?.dirty 
+        && formEditar.get('especie')?.errors?.['minlength']">Especie deve ter no minimo 3 letras</span>
+        <span *ngIf="formEditar.get('especie')?.dirty 
+        && formEditar.get('especie')?.errors?.['maxlength']">Especie deve ter no maximo 12 letras</span>
     <ion-item [disabled]="edicao">
-      <ion-input label="Nome" placeholder="Insira o nome" formControlName="nome"></ion-input>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input placeholder="Insira o nome" formControlName="nome"></ion-input>
     </ion-item>
+    <span *ngIf="formEditar.get('nome')?.dirty 
+        && formEditar.get('nome')?.errors?.['minlength']">Nome deve ter no minimo 3 letras</span>
+        <span *ngIf="formEditar.get('nome')?.dirty 
+        && formEditar.get('nome')?.errors?.['maxlength']">Nome deve ter no maximo 12 letras</span>
     <ion-item [disabled]="edicao">
       <ion-select label="Gênero" placeholder="Selecione" formControlName="genero">
         <ion-select-option value="0">Fêmea</ion-select-option>

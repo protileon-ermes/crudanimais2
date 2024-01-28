@@ -36,21 +36,19 @@ export class RegistrarPage implements OnInit {
 
   ngOnInit() {
     this.formRegistrar = this.formBuilder.group({
-      especie: ['',[Validators.required, Validators.min(3), Validators.max(12)]],
-      nome: ['',[Validators.required, Validators.min(3)]],
+      especie: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+      nome: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
       genero: ['',[Validators.required]],
       peso: [''],
       saude: ['']
     })
   }
-
+  
   registrar(){
-    if(!this.formRegistrar.valid){
-      this.alert.presentAlert("Erro", "Campos Obrigatórios!");
-    }else if(this.formRegistrar.value['especie'] <=2 || this.formRegistrar.value['nome'] <=2){
-      this.alert.presentAlert("Erro", "Espécie e nome devem ter pelo menos 3 letras");
-    }else if(this.formRegistrar.value['peso']<1){
-      this.alert.presentAlert("Erro", "Peso não pode ser 0 ou negativo");
+    if(this.formRegistrar.value['peso']<0){
+      this.alert.presentAlert("Erro", "Peso não pode ser negativo");
+    }else if(!this.formRegistrar.valid){
+      this.alert.presentAlert("Erro", "Espécie, nome e gênero são obrigatórios!");
     }else{
       let novo : Animais = new Animais(this.formRegistrar.value['especie'], this.formRegistrar.value['nome'], this.formRegistrar.value['genero']);
       novo.peso = this.formRegistrar.value['peso'];
