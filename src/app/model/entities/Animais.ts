@@ -8,10 +8,11 @@ export class Animais{
     private _downloadURL: any;
     private _uid: any;
 
-    constructor(especie:string,nome:string,genero:number){
+    constructor(especie:string,nome:string,genero:number,saude:number){
         this._especie=especie;
         this._genero=genero;
         this._nome=nome;
+        this._saude=saude;
     }
     public get id(): string {
         return this._id;

@@ -40,7 +40,7 @@ export class RegistrarPage implements OnInit {
       nome: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
       genero: ['',[Validators.required]],
       peso: [''],
-      saude: ['']
+      saude: ['',[Validators.required]]
     })
   }
   
@@ -48,11 +48,11 @@ export class RegistrarPage implements OnInit {
     if(this.formRegistrar.value['peso']<0){
       this.alert.presentAlert("Erro", "Peso não pode ser negativo");
     }else if(!this.formRegistrar.valid){
-      this.alert.presentAlert("Erro", "Espécie, nome e gênero são obrigatórios!");
+      this.alert.presentAlert("Erro", "Espécie, nome, gênero e saúde são obrigatórios!");
     }else{
-      let novo : Animais = new Animais(this.formRegistrar.value['especie'], this.formRegistrar.value['nome'], this.formRegistrar.value['genero']);
+      let novo : Animais = new Animais(this.formRegistrar.value['especie'], this.formRegistrar.value['nome'], this.formRegistrar.value['genero'], this.formRegistrar.value['saude']);
       novo.peso = this.formRegistrar.value['peso'];
-      novo.saude= this.formRegistrar.value['saude'];
+      //novo.saude= this.formRegistrar.value['saude'];
       novo.uid = this.user.uid;
       if(this.imagem){
         this.firebase.uploadImage(this.imagem, novo);

@@ -14,11 +14,11 @@ import { AlertService } from 'src/app/common/alert.service';
 })
 export class EditarPage implements OnInit {
   animal! : Animais;
-  especie!: string;
+  /*especie!: string;
   nome!: string;
   genero!: number;
   peso!: number;
-  saude!: number;
+  saude!: number;*/
   edicao : boolean = true;
   public imagem! : any;
   user : any;
@@ -42,7 +42,7 @@ export class EditarPage implements OnInit {
       nome: [this.animal.nome,[Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
       genero: [this.animal.genero,[Validators.required]],
       peso: [this.animal.peso],
-      saude: [this.animal.saude]
+      saude: [this.animal.saude,[Validators.required]]
     });
   }
   PermitirEdicao(){
@@ -62,11 +62,11 @@ export class EditarPage implements OnInit {
     if(this.formEditar.value['peso']<0){
       this.alert.presentAlert("Erro", "Peso não pode ser negativo");
     }else if(!this.formEditar.valid){
-      this.alert.presentAlert("Erro", "Espécie, nome e gênero são obrigatórios!!");
+      this.alert.presentAlert("Erro", "Espécie, nome, gênero e saúde são obrigatórios!!");
     }else{
-      let novo : Animais = new Animais(this.formEditar.value['especie'], this.formEditar.value['nome'], this.formEditar.value['genero']);
+      let novo : Animais = new Animais(this.formEditar.value['especie'], this.formEditar.value['nome'], this.formEditar.value['genero'], this.formEditar.value['saude']);
       novo.peso = this.formEditar.value['peso'];
-      novo.saude= this.formEditar.value['saude'];
+      //novo.saude= this.formEditar.value['saude'];
       novo.id = this.animal.id;
       novo.uid = this.user.uid;
       if(this.imagem){
