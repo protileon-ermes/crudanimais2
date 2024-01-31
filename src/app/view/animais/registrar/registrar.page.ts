@@ -37,7 +37,7 @@ export class RegistrarPage implements OnInit {
   ngOnInit() {
     this.formRegistrar = this.formBuilder.group({
       especie: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
-      nome: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+      nome: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       genero: ['',[Validators.required]],
       peso: [''],
       saude: ['',[Validators.required]]

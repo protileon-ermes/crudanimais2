@@ -39,7 +39,7 @@ export class EditarPage implements OnInit {
     this.animal=history.state.animal;
     this.formEditar = this.FormBuilder.group({
       especie: [this.animal.especie,[Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
-      nome: [this.animal.nome,[Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+      nome: [this.animal.nome,[Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       genero: [this.animal.genero,[Validators.required]],
       peso: [this.animal.peso],
       saude: [this.animal.saude,[Validators.required]]

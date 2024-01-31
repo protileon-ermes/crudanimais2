@@ -25,9 +25,10 @@
     <span *ngIf="formEditar.get('nome')?.dirty 
         && formEditar.get('nome')?.errors?.['minlength']">Nome deve ter no minimo 3 letras</span>
         <span *ngIf="formEditar.get('nome')?.dirty 
-        && formEditar.get('nome')?.errors?.['maxlength']">Nome deve ter no maximo 12 letras</span>
+        && formEditar.get('nome')?.errors?.['maxlength']">Nome deve ter no maximo 20 letras</span>
     <ion-item [disabled]="edicao">
-      <ion-select label="Gênero" placeholder="Selecione" formControlName="genero">
+      <ion-label position="floating">Gênero</ion-label>
+      <ion-select placeholder="Selecione" formControlName="genero">
         <ion-select-option value="0">Fêmea</ion-select-option>
         <ion-select-option value="1">Macho</ion-select-option>
       </ion-select>
